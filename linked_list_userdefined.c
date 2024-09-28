@@ -8,7 +8,7 @@ struct node
 };
 
 struct node *head = NULL;
-void linkedTraversal(struct node *head)
+void linkedTraversal()
 {
     struct node *ptr = head;
     while (ptr != NULL)
@@ -71,6 +71,6 @@ int main()
 
     printf("Linked list traversal ");
 
-    linkedTraversal(head);
+    linkedTraversal();
     return 0;
 }
