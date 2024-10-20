@@ -44,12 +44,13 @@ int dequeue(struct queue *q)
     }
     int value = q->arr[q->front];
     q->front++;
-    
+
     if (q->front > q->rear) // means all the elements are dequeued, hence reset the queue
         q->front = q->rear = -1;
-
+        
     return value; // dequeued value
 }
+
 
 void display(struct queue *q)
 {
@@ -72,7 +73,7 @@ int main()
     q->rear = -1;
     int c = 0, n, ch;
     printf("Enter the elements that you want to enqueue :\n");
-    while (c != MAX)
+    while (c < MAX)
     {
         printf("Enter the element :");
         scanf("%d", &n);
@@ -88,7 +89,7 @@ int main()
     display(q);
 
     printf("_____________Now Dequeuing elements______________ \n");
-    while(c >= 0)
+    while(!isEmpty(q))
     {
         printf("%d was dequeued \n", dequeue(q));
         printf("Press 1 to stop dequeue process \n");
@@ -96,5 +97,7 @@ int main()
         if (ch == 1)
             break;
     }
+
+    free(q);
     return 0;
 }
