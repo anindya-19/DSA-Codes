@@ -44,8 +44,7 @@ int dequeue(struct queue *q)
     }
     int value = q->arr[q->front];
     q->front++;
-    return value;
-
+    
     if (q->front > q->rear) // means all the elements are dequeued, hence reset the queue
         q->front = q->rear = -1;
 
