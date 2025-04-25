@@ -11,7 +11,7 @@ Point stack[MAX];
 int top = -1;
 // A global point needed for  sorting points with reference
 // to  the first point Used in compare function of qsort()
-Point p0;
+Point p0; // The point with the lowest y-coordinate (used as the reference or pivot for sorting).
 
 void swap(Point *a, Point *b)
 {
@@ -22,15 +22,20 @@ void swap(Point *a, Point *b)
 
 int orientation(Point p, Point q, Point r)
 {
+    // 0 if collinear
+    // 1 if clockwise turn
+    // 2 if counter-clockwise turn
     int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
     if (val == 0)
         return 0;             // collinear
     return (val > 0) ? 1 : 2; // 1: clockwise, 2: counter-clockwise
 }
 
+// A utility function to return square of distance
+// between p1 and p2
 int distSq(Point p1, Point p2)
 {
-    return (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y); //using pythagorean theorem to find the distance between two points
+    return (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y); // using pythagorean theorem to find the distance between two points
 }
 
 int compare(const void *a, const void *b)
